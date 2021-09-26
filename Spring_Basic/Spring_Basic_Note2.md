@@ -4,7 +4,7 @@
 
 
 
-![static contents image](/media/mwkang/Klevv/Spring 일지/스프링 입문/08.31/static contents image.png)
+![static contents image](https://user-images.githubusercontent.com/79822924/134794671-f280c2a6-06e4-48f0-9037-6dffacf2eeaf.png)
 
 - #### Controller이 우선 순위를 가지므로 Controller에서 hello-static이 있는지 확인한다.
 
@@ -49,8 +49,8 @@ public class HelloController {
 - #### Template engine이 실행되어 값이 HTML로 전송되면 hello!empty가 아닌 'hello ' + ${name}이 브라우저로 전송된다.
 
 
+![MVC, Template Engine image](https://user-images.githubusercontent.com/79822924/134794673-123fe318-6297-4bc4-be2c-3ec87c48a42e.png)
 
-![MVC, Template Engine image](/media/mwkang/Klevv/Spring 일지/스프링 입문/08.31/MVC, Template Engine image.png)
 
 - #### ViewResovler는 View를 찾아주고 Template에 연결하는 역할을 한다.  즉, 찾은 View를 Thymeleaf가 처리하여 매개변수 값을 변환 후 HTML로 브라우저에 전송한다.
 
@@ -92,8 +92,7 @@ public class HelloController {
 - #### 객체 자체를 전송하는 것이 가능하게 되어있다.
 
 
-
-![Using ResponseBody image](/media/mwkang/Klevv/Spring 일지/스프링 입문/08.31/Using ResponseBody image.png)
+![Using ResponseBody image](https://user-images.githubusercontent.com/79822924/134794679-d4fa936e-802f-4ced-9cfb-67c967244b4a.png)
 
 - #### @ResponseBody로 HttpMessageConverter를 viewResolver대신 사용한다.
 
