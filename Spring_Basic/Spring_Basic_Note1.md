@@ -151,9 +151,9 @@ public class HelloController {
 
 - #### ${data}는 HelloController 클래스에서 전달받은 model의 key값을 사용했으므로 value인 hello!!로 대체된다.
 
-![WebBrowzer Tomcat SpringContainer](F:\Spring 일지\스프링 입문\08.30\WebBrowzer Tomcat SpringContainer.png)
 
-#### Image 출처 : [김영한 스프링 입문](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%9E%85%EB%AC%B8-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8)
+![WebBrowzer Tomcat SpringContainer](https://user-images.githubusercontent.com/79822924/134794634-3d1a1654-5dab-4133-a0d9-380266482a4c.png)
+
 
 - #### 웹 브라우저에서 localhost:8080/hello를 서버로 요청하면 서버 내에서 helloController 내부의 메소드가 실행되어 return 값으로 templates/+{ViewName}+.html 파일을 실행할 준비를 마친 후 브라우저에 변환된 HTML 파일을 전송한다.
 
@@ -180,3 +180,6 @@ public class HelloController {
 3. #### $./gradlew clean build --> build 되었던 기록을 삭제하고 다시 build 한다.
 
 4. #### java -jar (Project Name)-0.0.1-SNAPSHOT.jar --> spring으로 생성된 jar 실행
+
+
+#### Image 출처 : [김영한 스프링 입문](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%9E%85%EB%AC%B8-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8)
