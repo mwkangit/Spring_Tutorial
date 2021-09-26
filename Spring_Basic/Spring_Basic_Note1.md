@@ -171,9 +171,15 @@
 
    4. #### java -jar (Project Name)-0.0.1-SNAPSHOT.jar --> spring으로 생성된 jar 실행
 
+<<<<<<< HEAD
    ## Linux
 
    1. #### $./gradlew build --> build 생성한다.
+=======
+
+![WebBrowzer Tomcat SpringContainer](https://user-images.githubusercontent.com/79822924/134794634-3d1a1654-5dab-4133-a0d9-380266482a4c.png)
+
+>>>>>>> 78924136781c431f8daaf54e548fdb407646bc5d
 
    2. #### $./gradlew clean --> build했던 폴더 삭제한다.
 
@@ -182,4 +188,29 @@
    4. #### java -jar (Project Name)-0.0.1-SNAPSHOT.jar --> spring으로 생성된 jar 실행
 
 
+<<<<<<< HEAD
    #### Image 출처 : [김영한 스프링 입문](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%9E%85%EB%AC%B8-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8)
+=======
+## Window
+
+1. #### $gradlew build --> build 생성한다.
+
+2. #### $gradlew clean --> build했던 폴더 삭제한다.
+
+3. #### $gradlew clean build --> build 되었던 기록을 삭제하고 다시 build 한다.
+
+4. #### java -jar (Project Name)-0.0.1-SNAPSHOT.jar --> spring으로 생성된 jar 실행
+
+## Linux
+
+1. #### $./gradlew build --> build 생성한다.
+
+2. #### $./gradlew clean --> build했던 폴더 삭제한다.
+
+3. #### $./gradlew clean build --> build 되었던 기록을 삭제하고 다시 build 한다.
+
+4. #### java -jar (Project Name)-0.0.1-SNAPSHOT.jar --> spring으로 생성된 jar 실행
+
+
+#### Image 출처 : [김영한 스프링 입문](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%9E%85%EB%AC%B8-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8)
+>>>>>>> 78924136781c431f8daaf54e548fdb407646bc5d
