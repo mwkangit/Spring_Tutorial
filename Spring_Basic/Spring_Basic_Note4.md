@@ -368,8 +368,8 @@ public interface SpringDataJpaMemberRepository extends JpaRepository<Member, Lon
 - #### FindByName() 메소드는 메소드명에 find와 뒤의 Name을 이용하여 Spring Data JPA가 자동으로 select m from Member m where m.name = ? 이라는 JPQL을 만들어준다.
 
 
+![Spring Data JPA](https://user-images.githubusercontent.com/79822924/135110420-c8f8bccc-0c0d-4d22-bd29-a97bf4bdc21e.png)
 
-![Spring Data JPA](/media/mwkang/Klevv/Spring 일지/스프링 입문/09.05/Spring Data JPA.png)
 
 - #### 80% 정도의 단순화 query는 Spring Data JPA의 인터페이스로 구현하는 것이 가능하다.
 
@@ -413,7 +413,8 @@ public class TimeTraceAop {
 
 
 
-![AOP Proxy](/media/mwkang/Klevv/Spring 일지/스프링 입문/09.05/AOP Proxy.png)
+![AOP Proxy](https://user-images.githubusercontent.com/79822924/135110336-c4daa404-8ed6-481b-97c2-1b38dc769b76.png)
+
 
 - #### DI를 이용하여 container은 실제 메소드를 실행하기 전에 가짜 메소드인 proxy를 만들어서 먼저 실행한다.  실제 메소드는 proxy가 종료 후 실행된다.  즉, proxy를 통해 미리 공통 관심사를 실행한 후 실제 메소드 한번 더 실행하는 것이다.
 
