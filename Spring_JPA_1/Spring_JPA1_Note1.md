@@ -1,6 +1,6 @@
 # JPA  Practice Explanation
 
-### ![practice function](/media/mwkang/Klevv/Spring 일지/스프링 입문/09.13/practice function.png)
+![practice function](https://user-images.githubusercontent.com/79822924/135642716-35199743-1102-4a71-9f08-5d4f4ed86c6a.png)
 
 - ## 기능
 
@@ -38,7 +38,7 @@
 
 ## Domain & Table Structure
 
-![Domain & Table](/media/mwkang/Klevv/Spring 일지/스프링 입문/09.13/Domain & Table.png)
+![Domain   Table](https://user-images.githubusercontent.com/79822924/135642785-66d3c63e-36ea-40bf-9ea2-65e23513c5bd.png)
 
 - #### 주문과 상품은 N : N 관계이지만 관계형 데이터베이스와 엔티티에서는 N : N 관계는 사용하지 않으므로 1 : N, N : 1 로 나누어서 표현한다.
 
@@ -46,7 +46,7 @@
 
 ## Entity Structure
 
-![Entity Analysis](/media/mwkang/Klevv/Spring 일지/스프링 입문/09.13/Entity Analysis.png)
+![Entity Analysis](https://user-images.githubusercontent.com/79822924/135642827-98d9018b-b8fe-4be7-acda-bc3ca83c9b55.png)
 
 - #### 각 엔티티를 객체화하여 다른 엔티티에서 사용하는 경우가 표현되어 있다.
 
@@ -54,7 +54,7 @@
 
 ## Table Structure
 
-![Table Analysis](/media/mwkang/Klevv/Spring 일지/스프링 입문/09.13/Table Analysis.png)
+![Table Analysis](https://user-images.githubusercontent.com/79822924/135642861-42426b34-d03e-4f5c-a21a-934e88c2b97a.png)
 
 - #### CITY, STREET, ZIPCODE는 MEMBER, DELIVERY 테이블에 모두 속하며 값이 변경되면 안돼므로 embedded 타입으로 작성한다.
 
