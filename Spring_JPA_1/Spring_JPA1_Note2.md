@@ -1,6 +1,6 @@
 # Application Architecture
 
-![Application Architecture](/media/mwkang/Klevv/Spring 일지/스프링 JPA1/09.24/Application Architecture.png)
+![Application Architecture](https://user-images.githubusercontent.com/79822924/137743686-63ab3d86-8c42-4dc1-af50-6e393520fead.png)
 
 - #### Controller, Web : 웹 계층
 
@@ -1483,7 +1483,7 @@ void update(Item itemParam) { //itemParam: 파리미터로 넘어온 준영속 �
 
 - #### 병합 사용 시 준영속 엔티티인  itemParam을 통해 엔티티가 업데이트 된다. 하지만 itemParam은 여전히 영속성 엔티티가 아니며 JPA를 통해 반환값으로 엔티티를 전달받은 mergeItem은 영속성 엔티티이다.
 
-![merge entity context](/media/mwkang/Klevv/Spring 일지/스프링 JPA1/09.24/merge entity context.png)
+![merge entity context](https://user-images.githubusercontent.com/79822924/137743835-f83d88ff-32db-40d2-9a58-7f80c9c05ebf.png)
 
 1. #### 캐시에 member과 같은 엔티티가 있는지 확인한다.(보통 없다)
 
