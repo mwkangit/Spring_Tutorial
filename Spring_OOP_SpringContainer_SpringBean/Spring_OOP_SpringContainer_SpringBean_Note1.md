@@ -24,9 +24,9 @@
 
 - ### 다형성과 SOLID를 반영하기 위해 각 객체는 인터페이스로 형성 후 상속하여 클래스로 구현한다.
 
-![Member Domain Relation](/media/mwkang/Klevv/Spring 일지/스프링 기본/Member Domain Relation.png)
+![Member Domain Relation](https://user-images.githubusercontent.com/79822924/138109532-bec6ac10-e6bc-4de2-849c-2f27f08dde06.png)
 
-![Member Class Diagram](/media/mwkang/Klevv/Spring 일지/스프링 기본/Member Class Diagram.png)
+![Member Class Diagram](https://user-images.githubusercontent.com/79822924/138109560-fe4de46e-5a02-4998-9aa0-363605d041b8.png)
 
 - #### Member 도메인과 클래스 다이어그램을 통해 member의 다형성을 확보하기 위해 여러개의 인터페이스와 클래스로 나누었다.
 
@@ -122,9 +122,9 @@ public class MemberServiceImpl implements MemberService{
 
 # Order
 
-![Order Domain](/media/mwkang/Klevv/Spring 일지/스프링 기본/Order Domain.png)
+![Order Domain](https://user-images.githubusercontent.com/79822924/138109616-4635ba99-63ec-43bb-9627-60bb00364149.png)
 
-![Order Class Diagram](/media/mwkang/Klevv/Spring 일지/스프링 기본/Order Class Diagram.png)
+![Order Class Diagram](https://user-images.githubusercontent.com/79822924/138109651-6a99ae61-2f6a-4845-babe-be13d4f3c1e7.png)
 
 - #### Order 도메인과 클래스 다이어그램을 통해 사용할 메소드를 지정하여 다형성을 확보하였다.
 
@@ -258,7 +258,7 @@ public class RateDiscountPolicy implements DiscountPolicy {
 
 
 
-![DIP, OCP 불충분](/media/mwkang/Klevv/Spring 일지/스프링 기본/DIP, OCP 불충분.png)
+![DIP, OCP 불충분](https://user-images.githubusercontent.com/79822924/138109708-600fcc48-7996-4ac0-bb3f-51934b61a4cb.png)
 
 ```java
 //    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
@@ -290,7 +290,7 @@ public class RateDiscountPolicy implements DiscountPolicy {
 
 - ### Application의 전체 동작 방식을 구성하기 위해, 구현 객체를 생성하고, 연결하는 책임을 가지는 별도의 설정 클래스인 AppConfig를 생성한다.(구성 및 설정 클래스)
 
-![AppConfig 생성자 주입](/media/mwkang/Klevv/Spring 일지/스프링 기본/AppConfig 생성자 주입.png)
+![AppConfig 생성자 주입](https://user-images.githubusercontent.com/79822924/138109786-41c959c5-e469-4efc-90d9-d29be6dc3f2f.png)
 
 ```java
 public class AppConfig {
@@ -364,7 +364,7 @@ public class OrderServiceImpl implements OrderService{
 
 - #### Config 클래스 또한 refactoring하여 역할에 따른 구현이 잘 보일 수 있게 해야한다.(중복 제거 후 변경에 용이하게 한다)
 
-![사용, 구성 영역](/media/mwkang/Klevv/Spring 일지/스프링 기본/사용, 구성 영역.png)
+![사용, 구성 영역](https://user-images.githubusercontent.com/79822924/138109863-90c2148b-1841-479d-a533-74c12cce41a1.png)
 
 - #### AppConfig로 application이 사용 영역과 객체를 생성하고 구성하는 영역으로 분리되었다.
 
