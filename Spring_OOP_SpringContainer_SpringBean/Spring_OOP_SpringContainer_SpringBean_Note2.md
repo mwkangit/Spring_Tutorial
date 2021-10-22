@@ -5,8 +5,7 @@
 - #### AnnotationConfigApplicationContext는  java annotation기반  config설정으로 spring bean을 만든다는 뜻이다.
 
 
-
-![스프링빈등록](/media/mwkang/Klevv/Spring 일지/스프링 기본/10.16/스프링빈등록.png)
+![스프링빈등록](https://user-images.githubusercontent.com/79822924/138466945-aee3344e-7c76-4d46-a72f-820e5c56ea15.png)
 
 - #### 형성된 스프링 컨테이너에 key, value형태로 빈을 등록한다.
 
@@ -15,8 +14,8 @@
 - #### 빈 객체는 value로 반환하는 값이 들어간다.
 
 
+![스프링빈의존관계완료](https://user-images.githubusercontent.com/79822924/138466978-6a05b33b-d2aa-47c6-b5b7-aa6716e497c7.png)
 
-![스프링빈의존관계완료](/media/mwkang/Klevv/Spring 일지/스프링 기본/10.16/스프링빈의존관계완료.png)
 
 - #### 스프링 컨테이너는 설정 정보를 참고하여 의존관계(DI)를 주입한다.
 
@@ -60,13 +59,13 @@
 
 
 
-![ApplicationContext설정사용](/media/mwkang/Klevv/Spring 일지/스프링 기본/10.16/ApplicationContext설정사용.png)
+![ApplicationContext설정사용](https://user-images.githubusercontent.com/79822924/138467018-1a13ceb5-b16a-4814-9626-35f8696cd138.png)
 
 - #### ApplicationContext에 java, XML, 임의로 제작한 설정을 사용하여 빈 등록을 하여 이용할 수 있다.
 
 
 
-![BeanDefinition](/media/mwkang/Klevv/Spring 일지/스프링 기본/10.16/BeanDefinition.png)
+![BeanDefinition](https://user-images.githubusercontent.com/79822924/138467043-a582ddf4-4ece-4539-8c1d-7418edf20f49.png)
 
 - #### 스프링 컨테이너는 BeanDefinition을 통해 메타정보를 기반으로 스프링 빈을 생성한다. 스프링 컨테이너는 BeanDefinition을 상속받아서 역할과 구현을 나눴다. 즉, 스프링 컨테이너는 설정정보가 java인지 XML인지 알 필요없이 BeanDefinition을 통해 정보를 인지하면 된다.
 
@@ -231,7 +230,7 @@ public class OrderServiceImpl implements OrderService{
 
 
 
-![Autowired](/media/mwkang/Klevv/Spring 일지/스프링 기본/10.16/Autowired.png)
+![Autowired](https://user-images.githubusercontent.com/79822924/138467093-b160b7c7-0c51-4a3c-8fe9-7a30169279f0.png)
 
 - #### @Autowired를 생성자에 지정하면 스프링 컨테이너가 자동으로 해당 스프링 빈을 찾아서 의존관계를 주입한다. 이때 기본 조회 전략은 타입이 같은 빈을 찾아서 주입하는 것이며 getBean(반환 클래스 타입)과 같은 의미이다.
 
