@@ -38,16 +38,18 @@ public class AppConfig {
 
     // memberService, orderService에 memoryRepository를 생성한다
     // 이렇게 하여 각자의 역할을 나눠 줄 수 있다
-    @Bean
-    public MemberRepository memberRepository() {
-        System.out.println("call AppConfig.memberRepository");
-        return new MemoryMemberRepository();
-    }
 
     @Bean
     public OrderService orderService(){
         System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
+//        return null; // OrderServiceImplTest 할 때 잠깐 사용
+    }
+
+    @Bean
+    public MemberRepository memberRepository() {
+        System.out.println("call AppConfig.memberRepository");
+        return new MemoryMemberRepository();
     }
 
     @Bean

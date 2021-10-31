@@ -3,6 +3,8 @@ package hello.core;
 
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +20,8 @@ public class AutoAppConfig {
 //    public MemberRepository memberRepository(){
 //        return new MemoryMemberRepository();
 //    }
+
+
 
 
 }

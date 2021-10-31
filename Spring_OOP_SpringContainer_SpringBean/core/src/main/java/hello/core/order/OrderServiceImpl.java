@@ -1,12 +1,15 @@
 package hello.core.order;
 
+import hello.core.annotation.MainDiscountPolicy;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+// @RequiredArgsConstructor // lombok으로 DI 자동주입
 public class OrderServiceImpl implements OrderService{
 
 //    private final MemberRepository memberRepository = new MemoryMemberRepository();
@@ -15,11 +18,43 @@ public class OrderServiceImpl implements OrderService{
 //    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
     // DIP 준수 코드
     // 완성하기 위해 DiscountPolicy를 알아서 주입해주는 클래스나 메소드를 만들어줘야한다.
+
+    // lombok으로 자동주입되었다
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
+    /* 필드 의존관계 주입
+    @Autowired private MemberRepository memberRepository;
+    @Autowired private DiscountPolicy discountPolicy;
+    */
+
+    // 수정자 의존관계 주입
+    // 수정자 의족관계 단점 설명에 쓰임
+    // OrderServiceImplTest에 쓰임
+/*
     @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    public void setMemberRepository(MemberRepository memberRepository){
+        this.memberRepository = memberRepository;
+    }
+
+    @Autowired
+    public void setMemberRepository(DiscountPolicy discountPolicy){
+        this.discountPolicy = discountPolicy;
+    }
+*/
+
+    /* 일반 메소드 의존관계 주입
+    public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy){
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
+    */
+
+
+
+    // 생성자 의존관계 주입
+    @Autowired
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
