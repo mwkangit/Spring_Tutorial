@@ -260,6 +260,380 @@ public class OrderServiceImpl implements OrderService{
 
 
 
+```java
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+public @interface MyExcludeComponent {
+}
+```
+
+```java
+@MyExcludeComponent
+public class BeanB {
+}
+```
+
+```java
+	@Configuration
+    @ComponentScan(
+            includeFilters = {
+                @Filter(type = FilterType.ANNOTATION, classes = MyIncludeComponent.class)
+                             },
+            excludeFilters = {
+                @Filter(type = FilterType.ANNOTATION, classes = MyExcludeComponent.class),
+                @Filter(type = FilterType.ASSIGNABLE_TYPE, classes = BeanA.class)
+            }
+        
+    )
+    static class ComponentFilterAppConfig{
+    }
+```
+
+- #### 어노테이션을 새로 생성하여 ComponentScan기능을 부여한 뒤 각 어노테이션에 대해 포함할지 결정할 수 있다.
+
+- #### FilterType에는 5가지가 있다.
+
+  - #### ANNOTATION : 기본값이며 어노테이션을 인식하여 동작한다.
+
+  - #### ASSIGNABLE_TYPE : 지정한 타입과 자식 타입을 인식해서 동작한다. 즉, 클래스를 직접 지정한다.
+
+  - #### ASPECTJ : AspectJ 패턴을 사용한다.
+
+  - #### REGEX : 정규 표현식이다.
+
+  - #### CUSTOM : TypeFilter이라는 인터페이스를 직접 구현하여 처리한다.
+
+
+
+```java
+@Configuration
+@ComponentScan(
+        basePackages = {"hello.core"},
+        excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Configuration.class)
+)
+public class AutoAppConfig {
+    @Bean(name = "memoryMemberRepository")
+    public MemberRepository memberRepository(){
+        return new MemoryMemberRepository();
+    }
+}
+```
+
+```java
+@Component
+public class MemoryMemberRepository implements MemberRepository{}
+```
+
+- #### 자동 빈 등록이 중복되어 충돌이 일어나면  ConflictingBeanDefinitionException 예외가 발생하여 실행을 중지한다.
+
+- #### 자동 빈 등록과 수동 빈 등록이 중복되어 실행되면 스프링 부트에서 오류가 발생하도록 해놓았다.
+
+- #### Application.properties에서 default로 overriding이 false로 되어 있는 것을 true로 바꾸면 수동 빈 등록이 자동 빈 등록보다 우선권을 가지게 되어 overriding이 가능해진다.
+
+
+
+# Auto Dependency Injection
+
+
+
+```java
+@Component
+public class OrderServiceImpl implements OrderService {
+	private final MemberRepository memberRepository;
+	private final DiscountPolicy discountPolicy;
+	@Autowired
+	public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+	this.memberRepository = memberRepository;
+	this.discountPolicy = discountPolicy;
+	}
+}
+```
+
+- #### 생성자 주입은 생성자를 통해 클래스 객체 생성 시점에 바로 의존관계를 주입하는 것이다.
+
+- #### 생성자 주입 시 생성자가 1개이면 @Autowired를 제외할 수 있다.
+
+- #### 생성자 주입은 스프링 컨테이너가 만들어질 때 동시에 의존관계 주입이 일어난다.
+
+- #### 생성자 주입은 의존관계가 어플리케이션 종료 시점까지 1번만 호출되어 불변하게 유지할 수 있다. 하지만 수정자 주입은 setter 메소드를 public으로 열어둬서 누군가가 의존관계를 변경하게 될 수도 있으므로 위험한 설계가 될 수 있다.
+
+- #### 수정자 의존관계인 경우 NPE가 발생할 수 있는데 이것은 setter 메소드를 실행하지 않아서 발생한다. 하지만 이미 setter 메소드를 감싸는 클래스를 선언하지 못하므로 setter 메소드를 실행할 수 없는 문제가 발생한다. 또한, 누락된 의존관계를 관리하기 까다롭다.
+
+- #### 생성자 주입은 final 키워드를 사용하여 생성자에서 혹시라도 값이 설정되지 않는 오류를 컴파일 시점에서 방지할 수 있다. Final 키워드는 선언과 정의를 동시에 해야하는 키워드이다.
+
+- #### 생성자 주입은 프레임워크에 의존하지 않고 순수한 자바 언어의 특징을 잘 살리는 방법이다.
+
+- #### 생성자 주입을 선택하고 필요 시 수정자 주입을 선택하고 필드 주입은 테스트 이외에 사용하지 않는 것이 좋다.
+
+
+
+```java
+@Component
+public class OrderServiceImpl implements OrderService {
+	private MemberRepository memberRepository;
+	private DiscountPolicy discountPolicy;
+	@Autowired
+	public void setMemberRepository(MemberRepository memberRepository) {
+	this.memberRepository = memberRepository;
+	}
+	@Autowired
+	public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+	this.discountPolicy = discountPolicy;
+	}
+}
+```
+
+- #### 수정자 주입은 자바 빈 프로퍼티 규약에 있는 수정자 메소드를 사용하는 방식을 사용한 의존관계 주입 방법이다.
+
+- #### Setter을 호출하는 방식으로 컨테이너의 빈을 조작하는 것이 가능해서 위험하다.
+
+- #### @Autowired는 default로 주입할 대상이 없으면 오류가 발생하지만 @Autowired(required = false)를 통해 선택적 주입을 구현할 수 있다.
+
+
+
+```java
+@Component
+public class OrderServiceImpl implements OrderService {
+	@Autowired
+	private MemberRepository memberRepository;
+	@Autowired
+	private DiscountPolicy discountPolicy;
+}
+```
+
+- #### 필드 주입은 필드에 바로 의존관계를 주입하는 것이다.
+
+- #### 외부에서 변경이 불가능해서 테스트하기 힘들다는 단점이 있다.
+
+- #### DI 프레임워크가 없다면 아무것도 할 수 없다.
+
+- #### 주로 테스트 코드나 스프링 설정을 목적으로 하는 @Configuration 같은 곳에서 사용한다.
+
+- #### @SpringBootTest를 이용하여 스프링 컨테이너를 테스트에 통합하여 @Autowired를 자유롭게 사용할 수 있다. @SpringBootTest는 자동으로 스프링 컨테이너에 테스트 토합하여 사용한다.
+
+
+
+```java
+@Component
+public class OrderServiceImpl implements OrderService {
+	private MemberRepository memberRepository;
+	private DiscountPolicy discountPolicy;
+	@Autowired
+	public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+	this.memberRepository = memberRepository;
+	this.discountPolicy = discountPolicy;
+	}
+}
+```
+
+- #### 일반 메소드 주입은 일반 메소드를 통해 의존관계를 주입하는 것이다.
+
+- #### 한번에 여러 필드를 주입할 수 있지만 생성자 주입으로 모두 가능하기 때문에 잘 사용하지 않는다.
+
+
+
+```java
+    static class TestBean{
+
+        @Autowired(required = false)
+        public void SetNoBean1(Member noBean1){
+            System.out.println("noBean1 = " + noBean1);
+        }
+
+        @Autowired
+        public void SetNoBean2(@Nullable Member noBean2){
+            System.out.println("noBean1 = " + noBean2);
+        }
+
+        @Autowired
+        public void SetNoBean3(Optional<Member> noBean3){
+            System.out.println("noBean3 = " + noBean3);
+        }
+
+    }
+```
+
+- #### 주입할 스프링 빈이 없어도 동작할 수 있는 방법이 3가지 있다.
+
+  - #### @Autowired(required = false) : 자동 주입할 대상이 없으면 수정자 메소드 자체가 호출이 되지 않는다.
+
+  - #### org.springframework.lang.@Nullable : 자동 주입할 대상이 없으면 null 입력된다. 
+
+  - #### Optional<> : 자동 주입할 대상이 없으면 Optional.empty가 입력된다. 값이 있으면 optional로 감싼다. Optional은 값이 null일 수도 있는 조건도 감싸는 자료형으로 많이 사용된다.
+
+
+
+```java
+@Component
+@RequiredArgsConstructor
+public class OrderServiceImpl implements OrderService {
+	private final MemberRepository memberRepository;
+	private final DiscountPolicy discountPolicy;
+}
+```
+
+```groovy
+configurations {
+	compileOnly{
+		extendsFrom annotationProcessor
+	}
+}	
+dependencies{
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+}
+```
+
+- #### Lombok은 객체에 대한 getter, setter을 자동으로 생성하는 어노테이션을 제공하는 동시에 @RequiredArgsConstructor을 통해 생성자 주입을 간편하게 구현할 수 있게 한다. 즉, lombok은 자바의 어노테이션 프로세서 기능을 이용하여 컴파일 시점에 생성자 코드를 자동을 생성한다. 실제 클래스를 열어보면 생성자가 만들어진 것을 확인 할 수 있다.
+
+- #### Gradle에 dependencies를 추가하면 lombok을 이용할 수 있다.
+
+
+
+```java
+@Component
+public class FixDiscountPolicy implements DiscountPolicy {}
+```
+
+```java
+@Component
+public class RateDiscountPolicy implements DiscountPolicy {}
+```
+
+- #### 타입으로 조회 시 같은 타입의 빈이 2개 이상 존재하면 NoUniqueBeanDefinitionException 오류가 발생한다.
+
+- #### 오류를 피하기 위해 하위 타입을 지정할 수 있지만 이것은  역할이 아닌 구현에 의존하는 것으로 DIP를 위배하여 유연성이 떨어질 수 있다.
+
+
+
+```java
+@Autowired
+private DiscountPolicy rateDiscountPolicy
+```
+
+- #### @Autowired는 타입 매칭 시 2개 이상으로 타입이 존재하면 필드 이름, 파라미터 이름으로 매칭을 재시도 한다.
+
+
+
+```java
+@Component
+@Qualifier("mainDiscountPolicy")
+public class RateDiscountPolicy implements DiscountPolicy {}
+```
+
+```java
+@Autowired
+public OrderServiceImpl(MemberRepository memberRepository,
+@Qualifier("mainDiscountPolicy") DiscountPolicy
+discountPolicy) {
+	this.memberRepository = memberRepository;
+	this.discountPolicy = discountPolicy;
+}
+```
+
+- #### @Qualifier는 추가 구분자를 붙여줘서 빈을 구별하도록 하는 방법이다. 빈 이름을 변경하는 것이 아닌 추가적인 구분자를 제공하는 것이다.
+
+- #### 타입 매칭 시 Qualifier끼리 매칭을 시도한 뒤 빈 이름으로 매칭한다. 만약 아직까지 빈을 찾지 못하면 예외를 발생한다.
+
+
+
+```java
+@Component
+@Primary
+public class RateDiscountPolicy implements DiscountPolicy {}
+
+@Component
+public class FixDiscountPolicy implements DiscountPolicy {}
+```
+
+- #### @Primary로 우선권을 부여하여 타입 매칭을 할 수 있다.
+
+- #### 주요 처리를 위한 부분에는 @Primary를 사용하여 간편하게 빈을 이용하고 서브 처리를 위한 부분에는 @Qualifier을 사용하여 필요한 순간에 빈을 사용하는 방법으로 구현하는 것이 좋다.
+
+- #### 스프링은 자동보다 수동이, 넓은 범위의 선택권보다 좁은 범위의 선택권이 우선 순위가 높아서 @Primary와 @Qualifier이 동시에 사용되면 @Qualifier이 우선권을 가진다.
+
+
+
+```java
+@Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER, ElementType.TYPE, ElementType.ANNOTATION_TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Inherited
+@Documented
+@Qualifier("mainDiscountPolicy")
+public @interface MainDiscountPolicy {
+}
+
+```
+
+- #### 어노테이션을 직접 생성하여 Qualifier과 같은 function을 직접 구현할 수 있다.
+
+
+
+```java
+@Test
+    void findAllBean(){
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AutoAppConfig.class, DiscountService.class);
+
+        DiscountService discountService = ac.getBean(DiscountService.class);
+        Member member = new Member(1L, "userA", Grade.VIP);
+        int discountPrice = discountService.discount(member, 10000, "fixDiscountPolicy");
+
+        assertThat(discountService).isInstanceOf(DiscountService.class);
+        assertThat(discountPrice).isEqualTo(1000);
+
+        int rateDiscountPrice = discountService.discount(member, 20000, "rateDiscountPolicy");
+
+        assertThat(rateDiscountPrice).isEqualTo(2000);
+    }
+
+    static class DiscountService{
+        private final Map<String, DiscountPolicy> policyMap;
+        private final List<DiscountPolicy> policies;
+
+        @Autowired
+        public DiscountService(Map<String, DiscountPolicy> policyMap, List<DiscountPolicy> policies) {
+            this.policyMap = policyMap;
+            this.policies = policies;
+            System.out.println("policyMap = " + policyMap);
+            System.out.println("policies = " + policies);
+        }
+
+        public int discount(Member member, int price, String discountCode) {
+            DiscountPolicy discountPolicy = policyMap.get(discountCode);
+            return discountPolicy.discount(member, price);
+        }
+    }
+```
+
+- #### List는 이름 없이 인스턴스에 대한 정보를 입력받고 Map은 이름이 key로 저장되고 빈 정보 타입이 value로 저장된다. 즉, 같은 타입으로 되어있는 빈이 모두 Map에 저장되는 것이다.
+
+- #### Map에 입력된 빈은 이름이 key값이므로 이름을 통해 value를 반환할 수 있다.
+
+- #### 만약 해당 타입 빈이 존재하지 않는다면 list와 map은 비어있는 값을 가지게 된다.
+
+
+
+## DI in Business
+
+- #### 어플리케이션은 2가지 로직으로 나눌 수 있다.
+
+  - #### 업무 로직 빈 : 컨트롤러, 서비스. 리포지토리 등 비즈니스 요구사항을 개발할 때 추가되거나 변경된다.
+
+  - #### 기술 지원 빈 : 공통 관심사(AOP) 등을 처리할 때 사용되며 업무 로직을 지원하기 위한 하부 기술이나 공통 기술이다.
+
+- #### 업무 로직은 숫자가 많으며 유사한 패턴이 존재하여 자동 기능을 적극 사용하는 것이 좋다.
+
+- #### 기술 지원 로직은 수가 적고 광범위하게 영향을 미치기 때문에 가급적 수동 빈 등록을 사용하여 빠르게 파악할 수 있도록 하는 것이 좋다.
+
+- #### 비즈니스 로직 중에서도 다형성을 적극 활용할 때 수동 빈 등록으로 명확하게 표현하는 것이 좋다. 설정정보를 한눈에 보지 못한다면 오류가 발생해도 탐지하기 어렵다. 또 다른 방법으로는 자동 빈 등록을 해도 특정 패키지에 같이 묶어서 한눈에 알아볼 수 있도록 하는 것이다.
+
+- #### 즉, 스프링 부트가 아닌 내가 직접 기술 지원 객체를 스프링 빈에 등록한다면 수동으로 등록해서 명확하게 들어내는 것이 좋다.
+
+
+
 # Keyboard Shortcut
 
 - #### soutm은 메소드명으로 sout한다.
@@ -269,4 +643,8 @@ public class OrderServiceImpl implements OrderService{
 - #### ctrl + alt + enter은 가르키는 곳 윗 부분에 새로운 줄을 생성한다
 
 - #### ctrl + shift + enter은 가르키는 곳 아래 부분에 새로운 줄을 생성한다.
+
+
+
+Image 출처 : [김영한 스프링 입문](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%9E%85%EB%AC%B8-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8)
 
