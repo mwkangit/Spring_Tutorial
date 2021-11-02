@@ -172,13 +172,13 @@ static class LifeCycleConfig {
 
 
 
-![prototypebean1](/media/mwkang/Klevv/Spring 일지/스프링 기본/10.31/prototypebean1.png)
+![prototypebean1](https://user-images.githubusercontent.com/79822924/139865663-3f9fbf32-57a8-41df-ad7a-ac9a7b8f5ed4.png)
 
 - #### 스프링 컨테이너는 요청한 빈에 대해 의존관계 주입, 초기화 단계까지 관리한다.
 
 
 
-![prototypebean2](/media/mwkang/Klevv/Spring 일지/스프링 기본/10.31/prototypebean2.png)
+![prototypebean2](https://user-images.githubusercontent.com/79822924/139865699-7abf2503-c1a4-44aa-b97e-1e153ff60b4d.png)
 
 - #### 과정을 마친 빈을 client에 반환하지만 요청이 오면 항상 새로운 프로토타입 빈을 생성해서 반환한다.
 
@@ -323,7 +323,7 @@ implementation 'javax.inject:javax.inject:1'
 
 
 
-![web_scope](/media/mwkang/Klevv/Spring 일지/스프링 기본/10.31/web_scope.png)
+![web_scope](https://user-images.githubusercontent.com/79822924/139865755-10cf38e5-69bb-4b74-b554-22544618cebf.png)
 
 - #### 웹 스코프는 웹환경에서만 동작하며 스프링이 해당 스코프의 종료시점까지 관리하여 소멸 메소드가 호출된다.
 
@@ -490,7 +490,7 @@ public class MyLogger {
 
 
 
-![proxy](/media/mwkang/Klevv/Spring 일지/스프링 기본/10.31/proxy.png)
+![proxy](https://user-images.githubusercontent.com/79822924/139865812-774fec59-7ff2-4ec1-a78d-017133d83ddd.png)
 
 - #### 프록시 객체는 요청이 오면 그때 내부에서 진짜 빈을 요청하는 위임 로직이 들어있다.
 
