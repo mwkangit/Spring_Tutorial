@@ -11,8 +11,7 @@
 - #### Hibernate를 자바 표준으로 인정하고 발전하여 JPA 가 탄생했다.
 
 
-
-![JPA Logic](/media/mwkang/Klevv/Spring 일지/ORM/11.14/JPA Logic.png)
+![JPA Logic](https://user-images.githubusercontent.com/79822924/142628704-48e097c2-18ad-43c6-98e9-46671c499630.png)
 
 - #### JPA는 트랜잭션 내에서 이루어지며 동일한 ㅡ랜잭션에서 조회한 엔티티는 같음을 보장한다.
 
@@ -106,7 +105,7 @@
 
 
 
-![JPA 구동 방식](/media/mwkang/Klevv/Spring 일지/ORM/11.14/JPA 구동 방식.png)
+![JPA 구동 방식](https://user-images.githubusercontent.com/79822924/142628762-47a64127-8df1-46c8-9f26-9eb231c96c46.png)
 
 - #### EntityManagerFactory는 하나만 생성하여 어플리케이션 전체에 공유한다.
 
@@ -128,7 +127,7 @@
 
 
 
-![엔티티 매니저 팩토리와 엔티티 매니저](/media/mwkang/Klevv/Spring 일지/ORM/11.14/엔티티 매니저 팩토리와 엔티티 매니저.png)
+![엔티티 매니저 팩토리와 엔티티 매니저](https://user-images.githubusercontent.com/79822924/142628792-8a9befe4-5812-405d-ad29-2fd5da96e5bd.png)
 
 - #### 엔티티 매니저 팩토리는 유일하며 각 사용자마다 엔티티 매니저를 할당한다. 즉, 각 트랜잭션 마다 엔티티 매니저를 할당한다.
 
@@ -138,7 +137,7 @@
 
 
 
-![엔티티의 생명주기](/media/mwkang/Klevv/Spring 일지/ORM/11.14/엔티티의 생명주기.png)
+![엔티티의 생명주기](https://user-images.githubusercontent.com/79822924/142628824-4e0df2f0-af9f-480a-b051-7d67a57e1259.png)
 
 - #### 비영속(new/transient)는 영속성 컨텍스트와 전혀 관계가 없는 새로운 상태로 메모리에서 사용하는 변수의 개념으로 생각할 수 있다.
 
@@ -154,7 +153,7 @@
 
 
 
-![1차 캐시 이점](/media/mwkang/Klevv/Spring 일지/ORM/11.14/1차 캐시 이점.png)
+![1차 캐시 이점](https://user-images.githubusercontent.com/79822924/142628848-6669618d-b864-4655-8a08-a56478709410.png)
 
 - #### 한 트랜잭션에서 영속성 컨텍스트에 등록시 1차 캐시에 등록되며 다시 특정 객체를 사용하고자하면 1차 캐시에서 먼저 객체를 탐색하여 사용한다.
 
@@ -176,7 +175,7 @@ System.out.println(a == b); // true
 
 
 
-![쓰기지연](/media/mwkang/Klevv/Spring 일지/ORM/11.14/쓰기지연.png)
+![쓰기지연](https://user-images.githubusercontent.com/79822924/142628872-cd9b8871-1504-4699-8663-36ad05e9aaf3.png)
 
 - #### 영속성 컨텍스트는 쓰기 지연 저장소에 SQL 쿼리를  저장한다.
 
@@ -190,7 +189,7 @@ System.out.println(a == b); // true
 
 
 
-![변경 감지](/media/mwkang/Klevv/Spring 일지/ORM/11.14/변경 감지.png)
+![변경 감지](https://user-images.githubusercontent.com/79822924/142628908-b740735c-11e3-4b95-b312-b05cee6e2d3f.png)
 
 - #### 스냅샷은 엔티티가 영속성 엔티티에 최초로 들어온 시점의 상태이다.
 
@@ -528,7 +527,7 @@ public class Member {
 
 
 
-![단방향 연관관계](/media/mwkang/Klevv/Spring 일지/ORM/11.14/단방향 연관관계.png)
+![단방향 연관관계](https://user-images.githubusercontent.com/79822924/142629027-76ac39b5-a337-45f6-983c-33f07553d225.png)
 
 ```java
 @Entity
@@ -560,9 +559,9 @@ public class Member {
 
 
 
-![양방향 연관관계](/media/mwkang/Klevv/Spring 일지/ORM/11.14/양방향 연관관계.png)
+![양방향 연관관계](https://user-images.githubusercontent.com/79822924/142629088-0d49c7ac-f40f-4e87-8fba-3f5cd38bffff.png)
 
-![양방향 연관관계2](/media/mwkang/Klevv/Spring 일지/ORM/11.14/양방향 연관관계2.png)
+![양방향 연관관계2](https://user-images.githubusercontent.com/79822924/142629105-f0ec20f8-c012-426b-9398-61154a98e81b.png)
 
 ```java
 @Entity
@@ -661,9 +660,9 @@ public void changeTeam(Team team) {
 
 
 
-![N 대 1 단방향](/media/mwkang/Klevv/Spring 일지/ORM/11.14/N 대 1 단방향.png)
+![N 대 1 단방향](https://user-images.githubusercontent.com/79822924/142629156-8ad38419-f03f-4a83-aaf7-77ef23edba61.png)
 
-![N 대 1 양방향](/media/mwkang/Klevv/Spring 일지/ORM/11.14/N 대 1 양방향.png)
+![N 대 1 양방향](https://user-images.githubusercontent.com/79822924/142629168-d1021b74-f75f-4219-b467-c03afcd743e4.png)
 
 - #### N : 1 은 가장 많이 사용하는 연관관계 구조이다.
 
@@ -675,9 +674,9 @@ public void changeTeam(Team team) {
 
 
 
-![1 대 N 단방향](/media/mwkang/Klevv/Spring 일지/ORM/11.14/1 대 N 단방향.png)
+![1 대 N 단방향](https://user-images.githubusercontent.com/79822924/142629183-77264682-72b7-431c-8c14-a73a2f0d9e50.png)
 
-![1 대 N 양방향](/media/mwkang/Klevv/Spring 일지/ORM/11.14/1 대 N 양방향.png)
+![1 대 N 양방향](https://user-images.githubusercontent.com/79822924/142629200-b79a7e7c-d241-46ff-ad0f-273085d442ce.png)
 
 - #### 1 : N 연관관계에서 외래키가 상대 엔티티에 있어도 1이 연관관계 주인이 된다.
 
@@ -711,9 +710,9 @@ public void changeTeam(Team team) {
 
 
 
-![1 대 1 단방향](/media/mwkang/Klevv/Spring 일지/ORM/11.14/1 대 1 단방향.png)
+![1 대 1 단방향](https://user-images.githubusercontent.com/79822924/142629225-14e5b9c6-3ba6-4b29-ba36-5a4b62d770c6.png)
 
-![1 대 1 양방향](/media/mwkang/Klevv/Spring 일지/ORM/11.14/1 대 1 양방향.png)
+![1 대 1 양방향](https://user-images.githubusercontent.com/79822924/142629240-134a804b-dc99-45e9-b617-ed8603a54adc.png)
 
 - #### 1 : 1 관계는 반대도 1 : 1 관계이다.
 
@@ -749,13 +748,13 @@ public void changeTeam(Team team) {
 
 
 
-![N 대 M 연관관계 객체](/media/mwkang/Klevv/Spring 일지/ORM/11.14/N 대 M 연관관계 객체.png)
+![N 대 M 연관관계 객체](https://user-images.githubusercontent.com/79822924/142629267-2b74d401-fcf5-4328-856c-c6aa57e724a2.png)
 
-![N 대 M 연관관계 테이블](/media/mwkang/Klevv/Spring 일지/ORM/11.14/N 대 M 연관관계 테이블.png)
+![N 대 M 연관관계 테이블](https://user-images.githubusercontent.com/79822924/142629285-6df73205-0e1a-465f-90fa-f829f78f84cf.png)
 
-![N 대 M to 1 대  N, N 대 1 객체](/media/mwkang/Klevv/Spring 일지/ORM/11.14/N 대 M to 1 대  N, N 대 1 객체.png)
+![N 대 M to 1 대  N, N 대 1 객체](https://user-images.githubusercontent.com/79822924/142629308-be908892-fc9e-44d4-bd1a-224178e69197.png)
 
-![N 대 M to 1 대 N, N 대 1 테이블](/media/mwkang/Klevv/Spring 일지/ORM/11.14/N 대 M to 1 대 N, N 대 1 테이블.png)
+![N 대 M to 1 대 N, N 대 1 테이블](https://user-images.githubusercontent.com/79822924/142629323-99f1cc1b-cc26-4b47-addc-338a659f237b.png)
 
 ```java
 @ManyToMany
