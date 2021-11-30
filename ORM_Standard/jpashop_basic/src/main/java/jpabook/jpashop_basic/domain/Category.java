@@ -4,8 +4,10 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Entity
-public class Category {
+public class Category extends BaseEntity{
 
     @Id @GeneratedValue
     private Long id;
@@ -16,7 +18,7 @@ public class Category {
     // 셀프로 매핑하는 것도 jpa 가능하다
     // 자식은 많지만 부모는 1개일 수 있으므로
 //여기 모르겠다
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "PARENT_ID")
     private Category parent;
 
