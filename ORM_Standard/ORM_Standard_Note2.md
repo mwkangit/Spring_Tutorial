@@ -22,19 +22,18 @@
 
 - #### 어노테이션만 수정하여 상속 매핑 전략을 선택할 수 있다. JPA의 좋은 전략이다.
 
-![관계형논리모델](/media/mwkang/Klevv/Spring 일지/ORM/11.27/관계형논리모델.png)
+![관계형논리모델](https://user-images.githubusercontent.com/79822924/144243601-6d143e76-9367-44a5-96ed-651ef66b235d.png)
 
-![객체상속관계](/media/mwkang/Klevv/Spring 일지/ORM/11.27/객체상속관계.png)
-
+![객체상속관계](https://user-images.githubusercontent.com/79822924/144243625-0f397548-fb50-45ea-b8d9-51c32d8fb90b.png)
 
 
 ## Join Strategy
 
 
 
-![조인전략객체](/media/mwkang/Klevv/Spring 일지/ORM/11.27/조인전략객체.png)
+![조인전략객체](https://user-images.githubusercontent.com/79822924/144243680-09e35aed-0333-40f7-90a4-97683eb770e1.png)
 
-![조인전략디비](/media/mwkang/Klevv/Spring 일지/ORM/11.27/조인전략디비.png)
+![조인전략디비](https://user-images.githubusercontent.com/79822924/144243703-6240457c-5c59-4c83-bd3c-e5087e5e6b6f.png)
 
 - #### 조인 전략은 @Inheritance(strategy = InheritanceType.JOINED)를 사용한다.
 
@@ -74,9 +73,9 @@
 
 
 
-![단일테이블전략객체](/media/mwkang/Klevv/Spring 일지/ORM/11.27/단일테이블전략객체.png)
+![단일테이블전략객체](https://user-images.githubusercontent.com/79822924/144243746-a33b0f0a-0b91-4f5e-9a95-a7427c9fca8a.png)
 
-![단일테이블전략디비](/media/mwkang/Klevv/Spring 일지/ORM/11.27/단일테이블전략디비.png)
+![단일테이블전략디비](https://user-images.githubusercontent.com/79822924/144243776-4fc6f5d8-3fbe-466c-9563-a38e78158391.png)
 
 - #### 단일 테이블 전략은 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)을 사용한다.
 
@@ -108,9 +107,9 @@
 
 
 
-![클래스마다테이블객체](/media/mwkang/Klevv/Spring 일지/ORM/11.27/클래스마다테이블객체.png)
+![클래스마다테이블객체](https://user-images.githubusercontent.com/79822924/144243831-ec3cd8ef-6dbd-4259-926c-4e9d4c4e9c4a.png)
 
-![클래스마다테이블디비](/media/mwkang/Klevv/Spring 일지/ORM/11.27/클래스마다테이블디비.png)
+![클래스마다테이블디비](https://user-images.githubusercontent.com/79822924/144243804-850aef61-210b-4fa1-b283-d3b376190d21.png)
 
 - #### 구현 클래스마다 테이블 전략은 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)을 사용한다.
 
@@ -146,9 +145,9 @@
 
 
 
-![MappedSuperclass1](/media/mwkang/Klevv/Spring 일지/ORM/11.27/MappedSuperclass1.png)
+![MappedSuperclass1](https://user-images.githubusercontent.com/79822924/144243861-d6d65966-13b2-44a5-abaa-0ab4ded2261d.png)
 
-![MappedSuperclass2](/media/mwkang/Klevv/Spring 일지/ORM/11.27/MappedSuperclass2.png)
+![MappedSuperclass2](https://user-images.githubusercontent.com/79822924/144243881-7de6c108-e5bb-4e98-8039-432fa294b3c1.png)
 
 ```java
 @MappedSuperclass
@@ -223,7 +222,7 @@ Member member = em.getReference(Member.class, memberId);
 member.getUsername();
 ```
 
-![proxy](/media/mwkang/Klevv/Spring 일지/ORM/11.27/proxy.png)
+![proxy](https://user-images.githubusercontent.com/79822924/144243929-64f4cb21-2d05-435e-b200-086e1fb44c0b.png)
 
 - #### GetReference()는 데이터베이스 조회를 미루는 가짜(프록시) 엔티티 객체를 조회한다.
 
@@ -274,7 +273,7 @@ public class Member {
 }
 ```
 
-![Lazy](/media/mwkang/Klevv/Spring 일지/ORM/11.27/Lazy.png)
+![Lazy](https://user-images.githubusercontent.com/79822924/144243967-9ce8a871-cefe-428b-8cb7-cedba8e2807f.png)
 
 - #### FetchType.Lazy는 지연로딩으로 엔티티를 프록시로 조회를 한다는 뜻이다. 즉, 위 코드에서 find() 시 Member 엔티티만 조회하며 Team 엔티티는 프록시로 생성해 놓는 것이다.
 
@@ -299,7 +298,7 @@ public class Member {
 }
 ```
 
-![EAGER](/media/mwkang/Klevv/Spring 일지/ORM/11.27/EAGER.png)
+![EAGER](https://user-images.githubusercontent.com/79822924/144243985-572b3f6b-203e-4fcb-8292-dfccb1993a2e.png)
 
 - #### FetchType.EAGER은 즉시로딩으로 연관된 엔티티를 모두 함께 조회한다는 뜻이다. 즉, 위 코드에서 find() 시 Member 엔티티와 Team 엔티티 모두 쿼리가 전송되어 조회된다.
 
@@ -325,7 +324,7 @@ public class Member {
 @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL)
 ```
 
-![cascade](/media/mwkang/Klevv/Spring 일지/ORM/11.27/cascade.png)
+![cascade](https://user-images.githubusercontent.com/79822924/144244014-9fb3dddb-116f-4c82-93c3-3d4b7668cc13.png)
 
 - #### Cascade는 특정 엔티티를 영속 상태로 만들 때 연관된 엔티티도 함께 영속 상태로 만들고 싶을 때 사용한다.
 
@@ -440,9 +439,9 @@ parent1.getChildren().remove(0);
 
 
 
-![embedded전](/media/mwkang/Klevv/Spring 일지/ORM/11.27/embedded전.png)
+![embedded전](https://user-images.githubusercontent.com/79822924/144244083-9dc5d81b-60ec-488f-9277-502a39cd70ca.png)
 
-![embedded후](/media/mwkang/Klevv/Spring 일지/ORM/11.27/embedded후.png)
+![embedded후](https://user-images.githubusercontent.com/79822924/144244099-4cd6ab69-e0cc-45c6-b4a4-1c49543bc81a.png)
 
 - #### 임베디드 타입은 값 타입을 묶어서 엔티티에 전달할 수 있다.
 
@@ -503,7 +502,7 @@ parent1.getChildren().remove(0);
 
 
 
-![불변객체 오류](/media/mwkang/Klevv/Spring 일지/ORM/11.27/불변객체 오류.png)
+![불변객체 오류](https://user-images.githubusercontent.com/79822924/144244149-bb707f2e-4f24-454f-954f-e7db55d8c5f0.png)
 
 - #### 같은 주소를 참조할 때 값을 바꾸면 양쪽 엔티티에 적용되는 부작용이 발생한다.
 
@@ -565,9 +564,9 @@ Address d = new Address("서울시");
 
 
 
-![값타입컬렉션1](/media/mwkang/Klevv/Spring 일지/ORM/11.27/값타입컬렉션1.png)
+![값타입컬렉션1](https://user-images.githubusercontent.com/79822924/144244207-7cdc9123-be4d-4df3-86e6-f06758d38d74.png)
 
-![값타입컬렉션2](/media/mwkang/Klevv/Spring 일지/ORM/11.27/값타입컬렉션2.png)
+![값타입컬렉션2](https://user-images.githubusercontent.com/79822924/144244225-eef766cd-da21-40e9-bd79-dc397cf5589a.png)
 
 - #### 값 타입 컬렉션은 값 타입을 컬렉션에 담아서 사용하는 것이다.
 
