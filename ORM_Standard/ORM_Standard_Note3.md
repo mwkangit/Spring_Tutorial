@@ -1038,7 +1038,4 @@ int resultCount = em.createQuery(qlString)
   - #### 벌크 연산 수행 후 영속성 컨텍스트를 초기화한다. 즉, 벌크 연산 후 바로 영속성 컨텍스트를 clear()을 사용하여 초기화한다. 이 방법을 거의 필수적으로 사용한다.
 
 
-
-
-
 Image 출처 : [김영한 ORM 표준 JPA](https://www.inflearn.com/course/ORM-JPA-Basic/dashboard)
