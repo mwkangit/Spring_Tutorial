@@ -1039,4 +1039,5 @@ int resultCount = em.createQuery(qlString)
 
 
 
+
 Image 출처 : [김영한 ORM 표준 JPA](https://www.inflearn.com/course/ORM-JPA-Basic/dashboard)
