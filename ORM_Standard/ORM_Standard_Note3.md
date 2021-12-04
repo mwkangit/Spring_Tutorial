@@ -109,6 +109,8 @@ List<Member> resultList = em.createNativeQuery(sql, Member.class).getResultList(
 ## JPQL Logic
 
 
+### Query & TypedQuery
+
 
 >select_문 :: =
 >select_절
@@ -627,11 +629,11 @@ select m.*
 
 
 
-![페치조인](/media/mwkang/Klevv/Spring 일지/ORM/12.03/페치조인.png)
+![페치조인](https://user-images.githubusercontent.com/79822924/144725088-83fe8eb5-ef44-4be6-9183-45956f64ae27.png)
 
-![페치조인2](/media/mwkang/Klevv/Spring 일지/ORM/12.03/페치조인2.png)
+![페치조인2](https://user-images.githubusercontent.com/79822924/144725089-4fa96136-ab27-4bee-a962-ffb99d6fbd7f.png)
 
-![페치조인3](/media/mwkang/Klevv/Spring 일지/ORM/12.03/페치조인3.png)
+![페치조인3](https://user-images.githubusercontent.com/79822924/144725094-5916f8e1-ddbf-4991-9a96-94890cb977ec.png)
 
 ```java
 // N + 1 문제 발생
@@ -667,11 +669,11 @@ SELECT M.*, T.* FROM MEMBER M INNER JOIN TEAM T ON M.TEAM_ID=T.ID
 
 
 
-![컬렉션 페치 조인](/media/mwkang/Klevv/Spring 일지/ORM/12.03/컬렉션 페치 조인.png)
+![컬렉션 페치 조인](https://user-images.githubusercontent.com/79822924/144725099-3eeb3770-97c2-4391-9538-f2d72b35a964.png)
 
-![컬렉션 페치 조인2](/media/mwkang/Klevv/Spring 일지/ORM/12.03/컬렉션 페치 조인2.png)
+![컬렉션 페치 조인2](https://user-images.githubusercontent.com/79822924/144725105-282ceb2f-36b8-4ae1-bded-9a92116765a3.png)
 
-![컬렉션 페치 조인3](/media/mwkang/Klevv/Spring 일지/ORM/12.03/컬렉션 페치 조인3.png)
+![컬렉션 페치 조인3](https://user-images.githubusercontent.com/79822924/144725108-de02a7e9-c324-4c85-82cb-2b39694c3ab5.png)
 
 ```java
 // 컬렉션 페치 조인
@@ -700,7 +702,7 @@ SELECT T.*, M.* FROM TEAM T INNER JOIN MEMBER M ON T.ID=M.TEAM_ID
 
 
 
-![distinct 페치 조인](/media/mwkang/Klevv/Spring 일지/ORM/12.03/distinct 페치 조인.png)
+![distinct 페치 조인](https://user-images.githubusercontent.com/79822924/144725157-5df3e3f2-8c66-46a9-a2c8-f46144cf4836.png)
 
 ```java
 // DISTINCT로 데이터 뻥튀기 제거
@@ -825,7 +827,7 @@ private List<Member> members = new ArrayList<>();
 
 ### TYPE & TREAT
 
-![다형성 쿼리](/media/mwkang/Klevv/Spring 일지/ORM/12.03/다형성 쿼리.png)
+![다형성 쿼리](https://user-images.githubusercontent.com/79822924/144725163-c3bbe38e-4c18-42fa-81dd-edb2b0dbb91a.png)
 
 ```java
 // TYPE
@@ -1038,15 +1040,3 @@ int resultCount = em.createQuery(qlString)
 
 
 Image 출처 : [김영한 ORM 표준 JPA](https://www.inflearn.com/course/ORM-JPA-Basic/dashboard)
-
-
-
-
-
-
-
-1. ####  JPQL 기본 기능때 안돼는 항목
-
-2. #### 페치 조인 페이징 때 1 : N 실행되는 되는 이유
-
-3. #### batch size 이해 안됀다
