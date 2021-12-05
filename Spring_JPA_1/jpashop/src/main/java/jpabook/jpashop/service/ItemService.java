@@ -28,4 +28,14 @@ public class ItemService {
         return itemRepository.findOne(itemId);
     }
 
+    /**
+     * 영속성 컨텍스틀가 자동 변경 (DirtyCheck)
+     */
+    @Transactional
+    public void updateItem(Long id, String name, int price){
+        Item item = itemRepository.findOne(id);
+        item.setName(name);
+        item.setPrice(price);
+    }
+
 }

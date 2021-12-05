@@ -76,6 +76,17 @@ public class BookController {
         // itemService.updateItem(itemId, form.getName(), form.getPrice(), form.getStockQuantity());
 
         itemService.saveItem(book);
-        return "redirect:items";
+        return "redirect:/items";
     }
+
+    /**
+     *  상품 수정, 권장 코드
+     */
+
+//    @PostMapping(value = "/items/{itemId}/edit")
+//    public String updateItem(@ModelAttribute("form") BookForm form){
+//        itemService.updateItem(form.getId(), form.getName(), form.getPrice());
+//        return "redirect:/items";
+//    }
+
 }
