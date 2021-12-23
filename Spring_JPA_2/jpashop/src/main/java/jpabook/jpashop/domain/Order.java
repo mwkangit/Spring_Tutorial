@@ -2,6 +2,7 @@ package jpabook.jpashop.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -21,6 +22,7 @@ public class Order {
     @JoinColumn(name = "member_id") // FK로 선언한 것이다 // 여기가 변경되면 member_id FK 값이 다른 멤버로 변경된다
     private Member member;
 
+    // @BatchSize(size = 1000)
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL) // orderItem의 order로 매핑된다
     private List<OrderItem> orderItems = new ArrayList<>();
 
